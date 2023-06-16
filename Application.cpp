@@ -72,7 +72,13 @@ void Application::InscrireUnConcurrent()
 /// </summary>
 void Application::AfficherParNom()
 {
-	//@TODO � compl�ter.
+	concurentsInscrits.sort([](const Concurrent& a, const Concurrent& b) {
+        return a.GetNom() < b.GetNom();
+    });
+
+    for(const Concurrent& concurrent : concurentsInscrits) {
+        std::cout << concurrent.GetNom() << " " << concurrent.GetDossard() << std::endl;
+    }
 }
 
 /// <summary>
@@ -80,7 +86,13 @@ void Application::AfficherParNom()
 /// </summary>
 void Application::AfficherParDossard()
 {
-	//@TODO � compl�ter.
+	concurentsInscrits.sort([](const Concurrent& a, const Concurrent& b) {
+        return a.GetDossard() < b.GetDossard();
+    });
+
+    for(const Concurrent& concurrent : concurentsInscrits) {
+        std::cout << "Dossard " << concurrent.GetDossard() << " : " << concurrent.GetNom() << std::endl;
+    }
 }
 
 /// <summary>
@@ -93,7 +105,14 @@ void Application::AfficherParDossard()
 /// </summary>
 void Application::NoterConcurrents()
 {
-	//@TODO � compl�ter.
+	for(auto& concurrent : concurentsInscrits)
+    {
+        int score;
+        std::cout << "Entrez le score du concurrent " << concurrent.GetNom() << ": ";
+        std::cin >> score;
+
+        resultats.insert({score, concurrent});
+    }
 }
 
 /// <summary>
@@ -101,7 +120,9 @@ void Application::NoterConcurrents()
 /// </summary>
 void Application::AfficherResultats()
 {
-	//@TODO � compl�ter.
+	for(const auto& [score, concurrent] : resultats) {
+        std::cout << concurrent.GetNom() << " " << concurrent.GetDossard() << " Score: " << score << std::endl;
+    }
 }
 
 /// <summary>

@@ -20,7 +20,6 @@ private:
 
 	/// <summary>
 	/// 
-	/// @TODO D�clarer les 3 conteneurs avec les noms et caract�ristiques indiqu�s dans le sujet
 	std::deque<int> dossardsPourAffectation; // conteneur pour les dossards disponibles
 	std::list<Concurrent> concurentsInscrits; // conteneur pour les concurrents inscrits
 	std::multimap<int, Concurrent> resultats; // conteneur pour les concurrents notés avec leur score
@@ -35,13 +34,6 @@ public:
 	/// Consiste � saisir le nombre de dossards n�cessaires (= nombre de concurrents)
 	/// puis � les cr�er dans le conteneur dossardsPourAffectation.
 	/// Entre 2 et 100 dossards.
-	void InitialiserCompetition();
-	void InscrireUnConcurrent();
-	void AfficherParNom();
-	void AfficherParDossard();
-	void NoterConcurrents();
-	void AfficherResultats();
-	void Run();
 	/// </summary>
 	void InitialiserCompetition();
 
@@ -55,17 +47,6 @@ public:
 	/// Pas d'inscription possible s'il ne reste plus de dossard disponible.
 	/// Le concurrent est affich� ainsi que le nombre de dossards pouvant encore �tre attribu�s.
 	/// </summary>
-	{
-	int nombreConcurrents;
-	do {
-		cout << "Entrez le nombre de concurrents (entre 2 et 100): ";
-		cin >> nombreConcurrents;
-	} while (nombreConcurrents < 2 || nombreConcurrents > 100);
-
-	for(int i = 0; i < nombreConcurrents; i++) {
-		dossardsPourAffectation.push_back(i+1);
-	}
-}
 	void InscrireUnConcurrent();
 
 	/// <summary>
